@@ -1,0 +1,22 @@
+.search-container {
+    position: relative;
+    width: 100vw;
+    padding: 25px 0;
+}
+
+.search-box {
+    position: absolute;
+    width: 80vw;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: large;
+    padding: 10px;
+    background-color: #000000dd;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+
+    &:focus {
+        border: 2px solid #f1f1f1;
+    }
+}

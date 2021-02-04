@@ -1,0 +1,15 @@
+@import "./gists";
+@import "./gistitem";
+@import "./search";
+
+body {
+    background-color: #010101dd;
+    color: #f1f1f1;
+    overflow-x: hidden;
+}
+
+.home-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
