@@ -17,8 +17,17 @@ const Gists = ({searchText}) => {
     useEffect(async () => {
         try {
             // Gets or filters the gists and sets the loading to false (displays the gists instead of the loading message)
-            const gists = await OctokitUtils.getPublicGists();
-            setGists(gists.filter(gist => gist.owner.login.includes(searchText)));
+            const _gists = await OctokitUtils.getPublicGists();
+            const filteredGists = _gists.filter(gist => gist.owner.login.includes(searchText));
+
+            // If there are no gists in the cached data, search for the user online
+            if(filteredGists.length > 0) {
+                setGists(filteredGists);
+                setLoading(true);
+            } else {
+                setGists(await OctokitUtils.getPublicGistsForUser(searchText));
+            }
+
             setLoading(false);
         } catch(err) {
             // Displays the error, if encountered

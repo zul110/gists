@@ -40,6 +40,17 @@ class OctokitUtils {
             throw err;
         }
     }
+
+    // Gets and stores public gists for a user
+    async getPublicGistsForUser(username) {
+        try {
+            const gists = await this.octokit.gists.listForUser({ username });
+
+            return gists.data;
+        } catch(err) {
+            throw err;
+        }
+    }
 }
 
 // Initializes an instance of the class to be exported as a singleton object
